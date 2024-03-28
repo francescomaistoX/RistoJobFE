@@ -1,0 +1,21 @@
+<div  class="bg-light ">
+  <h1 class="text-center "><a routerLink="/" class=" text-danger ">RistoJob </a></h1>
+  <div class="container mt-5 card w-50 altezza p-5 ">
+  <form>
+    <h3 class="fs-3 text-center">Entra nel mondo del lavoro</h3>
+    <p>Crea un account o accedi.</p>
+    <div class="mb-3 mt-3">
+      <label for="exampleInputEmail1" class="form-label">Email </label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="loginData.email">
+      <div id="emailHelp" class="form-text">     Non condivideremo mai la tua email con nessun altro.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="loginData.password">
+    </div>
+    <button type="submit" class="btn btn-danger m-3" (click)="saveLogin()">Accedi</button>
+    <a routerLink="/authlavoratore/register"  class="btn btn-danger">Registrati</a>
+    <p>Creando un account o effettuando l'accesso, comprendi e accetti i Termini di Servizio, le <a href="" class="text-danger" > Norme sui Cookie</a> e le Norme sulla Privacy di Indeed. Riceverai comunicazioni di marketing da Indeed e potrai interrompere la ricezione di tali messaggi in qualsiasi momento cliccando sul link per annullare l'iscrizione all'interno dei messaggi stessi o seguendo le indicazioni nei Termini di Servizio.</p>
+  </form>
+  </div>
+</div>

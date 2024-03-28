@@ -1,0 +1,40 @@
+<div class="bg-light">
+ <h1 class="text-center "><a routerLink="/" class=" text-danger ">RistoJob </a></h1>
+  <div class="container mt-5 card w-50 altezza p-5 ">
+  <form>
+    <h3 class="fs-3 text-center">Il tuo prossimo passo nel mondo del lavoro</h3>
+    <p>Crea un account.</p>
+    <div class="mb-3">
+      <label for="exampleInputNome" class="form-label">Nome </label>
+      <input type="text" class="form-control" id="exampleInputNome"  name="nome" [(ngModel)]="registerDate.nome">
+
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputNome" class="form-label">Cognome </label>
+      <input type="text" class="form-control" id="exampleInputNome"  name="cognome" [(ngModel)]="registerDate.cognome">
+
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputLuogo" class="form-label">Luogo</label>
+      <div class="d-flex">
+      <input type="email" class="form-control w-50" id="exampleInputNome" placeholder="comune"  name="comune" [(ngModel)]="registerDate.comune">
+      <select  class="form-select w-50" aria-label="Default select example" name="regione" [(ngModel)]="registerDate.regione" >
+          <option *ngFor="let regione of regioni"  [value]="regione.nome" >{{ regione.nome }}</option>
+        </select>
+    </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="registerDate.email">
+      <div id="emailHelp" class="form-text"> Non condivideremo mai la tua email con nessun altro.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="registerDate.password">
+    </div>
+    <button type="submit" class="btn btn-danger" (click)="saveR()"> Registrati </button>
+  </form>
+ </div>
+</div>
+

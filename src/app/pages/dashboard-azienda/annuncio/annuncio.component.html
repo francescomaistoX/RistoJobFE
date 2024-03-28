@@ -1,0 +1,88 @@
+<div class="z-1">
+<h1>{{annuncio.titolo}}</h1>
+<h6>Descrizione</h6>
+<p>{{annuncio.descrizione}}</p>
+<h6>Data</h6>
+<p>Dal:{{annuncio.giornoInizioLavoro}},al:{{annuncio.giornoFineLavoro}}</p>
+<h6>Orario</h6>
+<p>Dalle:{{annuncio.oraInizioLavoro}},alle:{{annuncio.oraFineLavoro}}</p>
+<h6>Paga giornaliera</h6>
+<p>{{annuncio.paga}}</p>
+<div class="d-flex">
+<div>
+  <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Lista Candidati
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div *ngFor="let c of candidature">
+        <div class="">
+          <div class="card-body d-flex m-1">
+            <h6 class="card-title m-1">{{c.nomeCandidato}} {{c.cognomeCandidato}}</h6>
+            <div class="bd-example m-1">
+              <button type="button" class="btn btn-danger fs btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="lista(profiloUtente.id)">
+                Visualizza Profilo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div class="p-2">
+    <a [routerLink]="['/dashboardAzienda/annunci/modifica',annuncio.id]" class="btn btn-danger"> Modifica </a>
+    <button (click)="elimina(annuncio.id)" class="btn btn-danger m-2">Elimina</button>
+  </div>
+</div>
+  <div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content z">
+      <div class="modal-header ">
+        <div>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{profiloUtente.nome}} {{profiloUtente.cognome}} </h1>
+        <p>{{profiloUtente.email}}</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+       <a href="{{profiloUtente.cv}}" class="text-danger"> <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-file-earmark-person-fill text-danger" viewBox="0 0 16 16">
+        <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0m2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755"/>
+      </svg> Visualizza CV</a>
+       <h6 class="mt-2">Recensioni</h6>
+      <div class="d-flex flex-wrap border border-secondary-subtle">
+
+        <div  *ngFor="let r of recensioni " class="mt-3 w-50 ">
+          <div class="card ">
+            <h6 class="card-header fs">{{r.utenteRecensore}} {{r.data}}</h6>
+            <div class="card-body">
+
+              <p class="card-text fs">{{r.testo}}</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+        <button class="btn btn-danger fs btn-sm mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Lascia una recensione
+        </button>
+
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <label for="exampleFormControlTextarea1" class="form-label">Scrivi Recensione </label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="testo" [(ngModel)]="recensione.testo"></textarea>
+          <button class="btn btn-danger"(click)="salvaRecensione(profiloUtente.id)" >Salva</button>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

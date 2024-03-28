@@ -1,0 +1,45 @@
+<div class="bg-light">
+  <div class="p-2">
+    <a  routerLink="/dashboardlavoratore"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-circle-fill text-danger" viewBox="0 0 16 16">
+      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+    </svg></a>
+</div>
+<div>
+  <h2>Modifica Profilo</h2>
+</div>
+<div class="container w-50 card">
+<form>
+  <div class="mb-3">
+    <label for="exampleInputNome" class="form-label">Nome </label>
+    <input type="text" class="form-control" id="exampleInputNome"  name="nome" [(ngModel)]="lavoratore.nome">
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputNome" class="form-label">Cognome </label>
+    <input type="text" class="form-control" id="exampleInputNome"  name="cognome" [(ngModel)]="lavoratore.cognome">
+
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputLuogo" class="form-label">Luogo</label>
+    <div class="d-flex">
+    <input type="email" class="form-control w-50" id="exampleInputNome" placeholder="comune"  name="comune" [(ngModel)]="lavoratore.comune">
+    <select  class="form-select w-50" aria-label="Default select example" name="regione" [(ngModel)]="lavoratore.regione" >
+        <option *ngFor="let regione of regioni"  [value]="regione.nome" >{{ regione.nome }}</option>
+      </select>
+  </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="lavoratore.email">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="lavoratore.password">
+  </div>
+  <button type="submit" class="btn btn-danger" (click)="aggiorna(lavoratore.id)"> Aggiorna</button>
+
+</form>
+</div>
+</div>

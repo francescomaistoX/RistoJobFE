@@ -1,0 +1,22 @@
+<div class="annuncio">
+<div class="">
+   <h5> Candidati</h5>
+<form>
+  <div class="mb-3">
+    <label for="exampleInputNome" class="form-label">Nome </label>
+    <input type="text" class="form-control" id="exampleInputNome"  name="nomeCandidato" [(ngModel)]="candidatura.nomeCandidato">
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputNome" class="form-label">Cognome </label>
+    <input type="text" class="form-control" id="exampleInputNome"  name="cognome" [(ngModel)]="candidatura.cognomeCandidato">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" [(ngModel)]="candidatura.email">
+  </div>
+  <button type="submit" class="btn btn-danger m-2" (click)="invia()"> Candidati </button>
+   <a routerLink="/dashboardlavoratore/homel" class="btn btn-danger">indietro</a>
+</form>
+</div>
+</div>

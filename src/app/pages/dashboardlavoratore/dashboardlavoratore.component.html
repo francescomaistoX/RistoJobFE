@@ -1,0 +1,87 @@
+<header class="d-flex flex-wrap justify-content-between  align-items-center border-bottom">
+  <a routerLink="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <img class="logo" src="../../.././assets/Rysto job.png" alt="logo">
+  </a>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item "><a routerLink="homel" class="nav-link text-dark  " aria-current="page">Homepage</a></li>
+  </ul>
+  <div class="btn-group">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+      </svg>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a routerLink="modifica" class="dropdown-item" >Modifica Profilo</a></li>
+      <li><a  class="dropdown-item " (click)="logout()">Esci</a></li>
+    </ul>
+  </div>
+</header>
+<div >
+  <div class="text-center p-2 mt-4">
+    <h3>{{utente.nome}} {{utente.cognome}}</h3>
+    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+    </svg> {{utente.email}}</h5>
+    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+      <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+      <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+    </svg> {{utente.comune}},{{utente.regione}}</h5>
+
+  </div>
+</div>
+<div class="text-center">
+<h2>Curriculum Vitae:</h2>
+<div *ngIf="caricato" class="mt-4">
+<div  (click)="input.click()" class="cv " >
+<input hidden #input type="file" class="file-input" (change)="onChange($event)" #fileUpload />
+</div>
+<div *ngIf="file" >
+  <section class="file-info">
+    File details:
+    <ul>
+      <li>Name: {{file.name}}</li>
+      <li>Type: {{file.type}}</li>
+      <li>Size: {{file.size}} bytes</li>
+    </ul>
+  </section>
+  <button (click)="onUpload()">carica file</button>
+
+  <section [ngSwitch]="status">
+    <p *ngSwitchCase="'uploading'">⏳ Uploading...</p>
+    <p *ngSwitchCase="'success'">✅ Done!</p>
+    <p *ngSwitchCase="'fail'">❌ Error!</p>
+    <p *ngSwitchDefault> Waiting to upload...</p>
+  </section>
+</div>
+</div>
+
+<div class="text-center cv-caricato d-flex align-items-center"*ngIf="!caricato" >
+  <img src="../../../assets/pdf icon.jpg" alt="" class="pdf">
+<a  class="  text-dark active   " (click)="visualizzaFile(utente.cv)">{{utente.cv}}</a>
+<button *ngIf="!caricato" class="btn btn-danger m-2" (click)="cambioFile()">Sostituisci File</button>
+</div>
+<button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="lista(utente.id)">
+  Recensioni
+</button>
+<div class="collapse" id="collapseExample">
+<div class="card card-body d-flex flex-wrap">
+  <div  *ngFor="let r of recensioni " class="mt-3 w-50 ">
+    <div class="card ">
+      <h6 class="card-header fs">{{r.utenteRecensore}} {{r.data}}</h6>
+      <div class="card-body">
+
+        <p class="card-text fs">{{r.testo}}</p>
+
+      </div>
+       </div>
+     </div>
+    </div>
+   </div>
+
+
+</div>
+
+
+

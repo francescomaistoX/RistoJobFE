@@ -1,0 +1,46 @@
+<a [routerLink]="['/dashboardAzienda/annunci/',annuncio.id]">indietro</a>
+<h2>Modifica Annuncio</h2>
+<form>
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Titolo annuncio"  name="titolo" [(ngModel)]="annuncio.titolo">
+  </div>
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="nome azienda"  name="nome" [(ngModel)]="annuncio.nomeStruttura">
+  </div>
+  <div class="mb-3">
+    <textarea class="form-control" placeholder="Descrizione" rows="3" name="descrizione" [(ngModel)]="annuncio.descrizione"></textarea>
+  </div>
+  <div class="mb-3">
+    <div class="d-flex">
+    <input type="text" class="form-control w-50" id="exampleInputNome" placeholder="comune"  name="comune" [(ngModel)]="annuncio.comune">
+    <select  class="form-select w-50" aria-label="Default select example" name="regione" [(ngModel)]="annuncio.regione" >
+        <option *ngFor="let regione of regioni"  [value]="regione.nome" >{{ regione.nome }}</option>
+      </select>
+  </div>
+  </div>
+<div class="d-flex">
+<div class="mb-3">
+  <label for="data" class="form-label">Data inizio </label>
+  <input type="date" id="data" class="form-control" placeholder="dataInizio"  name="dataInizio" [(ngModel)]="annuncio.giornoInizioLavoro">
+</div>
+<div class="mb-3">
+  <label for="data" class="form-label">Data fine</label>
+  <input type="date" id="data" class="form-control" placeholder="dataFine"  name="dataFine" [(ngModel)]="annuncio.giornoFineLavoro">
+</div>
+</div>
+<div class="d-flex">
+  <div class="mb-3">
+  <label for="data" class="form-label">Ora inzio</label>
+  <input type="time" id="data" class="form-contro w-50"  name="oraInizio" [(ngModel)]="annuncio.oraInizioLavoro">
+</div>
+<div class="mb-3">
+  <label for="data" class="form-label">Ora fine</label>
+  <input type="time" id="data"  class="form-contro w-50"  name="oraFine" [(ngModel)]="annuncio.OraFineLavoro">
+</div>
+</div><div class="mb-3">
+  <input type="number" class="form-control" placeholder="paga giornaliera"  name="paga" [(ngModel)]="annuncio.paga">
+</div>
+
+<button type="submit" class="btn btn-danger"(click)="aggiorna(annuncio.idAzienda)" > Aggiorna </button>
+
+</form>

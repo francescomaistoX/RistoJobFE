@@ -1,0 +1,54 @@
+<header class="d-flex flex-wrap justify-content-between  align-items-center border-bottom  bg-light sticky z-1">
+  <a routerLink="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <img class="logo" src="../../.././assets/Rysto job.png" alt="logo">
+  </a>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item "><a routerLink="/home" class="nav-link text-dark  " aria-current="page">Homepage</a></li>
+    <li class="nav-item">
+      <a routerLink="/authlavoratore" class="nav-link  text-dark active bg-danger  ">   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-person-fill m-1" viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+      </svg>Accedi</a></li>
+    <li class="nav-item "><a routerLink="/authazienda" class="nav-link text-dark  ">Ristojob aziende</a></li>
+
+  </ul>
+</header>
+<div class="d-flex shadow w-75 h-75 justify-content-center m-auto mt-3 mb-4 ">
+  <input type="email" class="form-control w-50 " id="exampleInputNome" placeholder="città"  name="comune" [(ngModel)]="filtro.comune">
+  <select  class="form-select w-50 " aria-label="Default select example" name="regione" [(ngModel)]="filtro.regione" >
+      <option *ngFor="let regione of regioni"  [value]="regione.nome" >{{ regione.nome }}</option>
+    </select>
+    <button class="btn btn-danger"(click)="filtra()">Cerca</button>
+</div>
+<div class="d-flex justify-content-center   ">
+
+  <div class=" w-50 me-3" >
+    <div *ngIf="mostra">
+    <div  *ngFor="let a of annunci" >
+      <div class="card mb-4 ">
+          <h5 class="card-header">{{a.titolo}}</h5>
+          <div class="card-body">
+            <p>{{a.comune}},{{a.regione}}</p>
+          <h5 class="card-title">{{a.nomeStruttura}}</h5>
+          <p class="card-text mb-0">Data inizio:{{a.giornoInizioLavoro}}</p>
+          <p class="card-text">Data fine:{{a.giornoFineLavoro}}</p>
+          <a [routerLink]="[a.id]"class="btn btn-danger">visualizza</a>
+          </div>
+        </div>
+    </div>
+  </div>
+     <div *ngIf="!mostra">
+    <div  *ngFor="let a of annunciFiltrati">
+      <div class="card">
+          <h5 class="card-header">{{a.titolo}}</h5>
+          <div class="card-body">
+          <h5 class="card-title">{{a.nomeStruttura}}</h5>
+          <p class="card-text">{{a.descrizione}}</p>
+          <a [routerLink]="[a.id]"class="btn btn-danger">visualizza</a>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+  <router-outlet  ></router-outlet>
+</div>

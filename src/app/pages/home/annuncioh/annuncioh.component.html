@@ -1,0 +1,18 @@
+<div class="annuncio card bg-light p-3">
+
+<div class="position-sticky top-0">
+<h1 class="card-header mb-2">{{annuncio.titolo}}</h1>
+</div>
+<h6>{{annuncio.nomeStruttura}}</h6>
+<p>{{annuncio.comune}},{{annuncio.regione}}</p>
+<h3>Dettagli offerta:</h3>
+<p>{{annuncio.descrizione}}</p>
+<h3>Data </h3>
+<p>dal:{{annuncio.giornoInizioLavoro}},al{{annuncio.giornoFineLavoro}}</p>
+<h3>Orario</h3>
+<p>dalle:{{annuncio.oraInizioLavoro}},alle:{{annuncio.oraFineLavoro}}</p>
+<h3>Paga giornaliera</h3>
+<p>{{annuncio.paga}}</p>
+<a routerLink="/authlavoratore/login" class="btn btn-danger">Candidati ora</a>
+</div>
+
